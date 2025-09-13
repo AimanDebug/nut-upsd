@@ -31,6 +31,7 @@ LABEL org.label-schema.vendor="Sudo-Bot" \
     org.label-schema.docker.schema-version="1.0"
 
 # Find similar config in: https://git.alpinelinux.org/aports/tree/testing/nut/APKBUILD?id=17c662d69ebf24fbff2fa065d7544863ada956a5
+# Dependencies install
 RUN set -ex; \
 	# run dependencies
 	apk add --update  --no-cache \
@@ -46,7 +47,10 @@ RUN set -ex; \
         nss-dev \
         neon-dev \
 		build-base \
-	; \
+	;
+
+# Nut installation
+RUN set -ex; \
 	# download and extract
 	cd /tmp; \
     printf "%s  nut-${NUT_VERSION}.tar.gz\n" "$NUT_SHA256" > nut-$NUT_VERSION.tar.gz.sha256; \
